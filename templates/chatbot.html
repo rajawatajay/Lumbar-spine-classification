@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <style>
+        form {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const chatBox = document.getElementById('chatBox');
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const form = document.querySelector('form');
+            form.addEventListener('submit', () => {
+                setTimeout(() => {
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, 100);
+            });
+        });
+    </script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <center>
+    <h1>Chat with our AI Assistant</h1>
+    <div id="chatBox">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message user-message">
+                    <p>{{ message.user }}</p>
+                </div>
+                <div class="message bot-message">
+                    <p>{{ message.bot }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <form action="{{ url_for('chatbot') }}" method="post">
+        <input type="text" name="message" placeholder="Type your message here..." required>
+        <button type="submit">Send</button>
+    </form>
+    </center>
+    {% include 'footer.html' %}
+</body>
+</html>

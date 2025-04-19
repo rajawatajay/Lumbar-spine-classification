@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="{{url_for('static', filename='Bprec-logo.png')}}" type="image/png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <nav>
+        <span class="logo">
+            <a href="{{ url_for('index') }}"><img
+                    src="{{url_for('static', filename='Bprec-logo.png')}}" alt="Bprec logo"></a>
+        </span>
+        <ul>
+            
+            <li class="hover-underline-animation center nav-home"><a href="{{ url_for('index') }}">Home</a></li>
+            <li class="hover-underline-animation center nav-about"><a href="{{ url_for('about') }}">About</a></li>
+            <li class="hover-underline-animation center nav-services"><a href="{{ url_for('services') }}">Services</a></li>
+            <li class="hover-underline-animation center nav-contact"><a href="{{ url_for('contact') }}">Contact</a></li>
+            {% if session.user %}
+            <strong class="hover-underline-animation center Name"><a href="{{ url_for('dashboard') }}">{{ session.user[1] }}</a></strong>
+            <li class="hover-underline-animation center"><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            <li class="hover-underline-animation center nav-login"><a href="{{ url_for('login')}}">Login/Signup</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <script>
+        const currentUrl = window.location.href;
+
+        // Define a mapping of keywords to navbar elements
+        const navItems = {
+            // "": document.querySelector(".nav-home"),
+            "about": document.querySelector(".nav-about"),
+            "contact": document.querySelector(".nav-contact"),
+            "services": document.querySelector(".nav-services"),
+            'login': document.querySelector(".nav-login")
+        };
+
+        // Iterate over the mapping
+        Object.keys(navItems).forEach(keyword => {
+            if (currentUrl.includes(keyword) && navItems[keyword]) {
+                navItems[keyword].classList.add("active");
+            }
+        });
+
+    </script>
+</body>
+
+</html>

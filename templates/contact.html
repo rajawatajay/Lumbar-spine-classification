@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .contact-form form {
+            margin: 0 auto;
+            padding: 3em;
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            border: 1px solid#ccc;
+            border-radius: 5em;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            /* Subtle shadow for depth */
+            backdrop-filter: blur(10px);
+            /* Glassmorphism blur */
+            -webkit-backdrop-filter: blur(10px);
+            /* Safari compatibility */
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            /* Semi-transparent border */
+        }
+
+        input,
+        button {
+            height: 100%;
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            font-weight: 400;
+            border-radius: 6px;
+        }
+
+        input {
+            outline: none;
+            padding: 0 15px;
+            border: 1px solid #CACACA;
+        }
+
+        input:focus {
+            border-bottom-width: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <div class="contact-form">
+        <center>
+            <h1>Contact Us</h1>
+            <p>For any inquiries, please email us at <a href="mailto:bbc@info.com">bbc@info.com</a></p>
+        </center>
+        <!-- Contact Form -->
+        <form action="/submit-form" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+            <br>
+            <button type="submit">Send Message</button>
+            <br>
+            <center>
+                <div class="social-icons">
+                    <a href="https://github.com/Itzkuldeep" target="_blank" title="GitHub">
+                        <i class="fab fa-github fa-2x" style="margin: 10px;"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kuldeep-singh-tak-16037b226/" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin fa-2x" style="margin: 10px;"></i>
+                    </a>
+                    <a href="mailto:bbc@info.com" title="Email">
+                        <i class="fas fa-envelope fa-2x" style="margin: 10px;"></i>
+                    </a>
+                </div>
+            </center>
+        </form>
+    </div>
+    {% include 'footer.html' %}
+</body>
+
+</html>

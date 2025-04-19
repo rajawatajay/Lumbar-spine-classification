@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+/* Keyframes for animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: transparent; }
+}
+
+/* Reset and Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* overflow-y: auto; */
+}
+
+/* Body Styling */
+body {
+    background-image: url('bgimage.jpg');
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* height: 100vh; */
+    width: 100vw;
+    /* overflow: hidden; */
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo img{
+    margin-left: 20px;
+    height: 120px;
+    width: 120px;
+}
+
+/* Navbar Styling */
+nav {
+    /* background: linear-gradient(45deg, #f1a9a9, #eaa1ba); */
+    padding: 2px;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideDown 1s ease-in-out;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    flex-grow: 1;
+    margin: 5px;
+}
+
+nav ul li a {
+    padding-right: 50px;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+    font-size: 22px;
+    text-decoration:none;
+}
+.active{
+    position: relative;
+}
+
+.active::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    transform: scaleX(1) !important;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom center;
+}
+
+
+.Name{
+    padding-right:30px;
+    color: black;
+    font-size: 1.2em;
+    transition: color 0.3s ease-in-out;
+}
+
+.Name:hover {
+    color: #ffffff;
+    font-size: 22px;
+    text-decoration:none;
+}
+
+/* Home Content Styling */
+.home-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding-left: 50px;
+    animation: fadeIn 2s ease-in-out;
+    text-align: left;
+}
+
+.home-content h1 {
+    margin: 0;
+    text-align: left;
+}
+
+.home-content p {
+    margin: 0;
+    text-align: left;
+}
+
+/* Footer Styling */
+footer {
+    background: linear-gradient(45deg, #6aa5e0, #94d5fb);
+    padding: 0px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    animation: slideUp 1s ease-in-out;
+}
+footer p{
+    margin: 5px;
+}
+
+/* Typewriter Effect */
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+  }
+
+  .hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom center;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  .hover-underline-animation.center::after {
+    transform-origin: bottom center;
+  }
+
+  .hover-underline-animation.center:hover::after {
+    transform-origin: bottom center;
+  }
+
+/* Unique Section for Login & Signup */
+.login-signup-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.login-signup-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.login-signup-tab {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.login-signup-tab:hover {
+    background: linear-gradient(45deg, #003366, #0073e6);
+    color: white;
+}
+
+.login-signup-form {
+    display: none;
+    padding: 20px;
+}
+
+.active-form {
+    display: block;
+}
+
+.login-signup-input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-signup-input:focus {
+    border-color: #0073e6;
+    outline: none;
+}
+
+.login-signup-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(45deg, #003366, #0073e6);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-signup-btn:hover {
+    background: linear-gradient(45deg, #002244, #0059b3);
+}
+/* Chatbot Styles */
+#chatBox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 600px;
+    width: 100%;
+    height: 400px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    animation: fadeIn 0.5s;
+}
+
+.user-message {
+    text-align: right;
+    background-color: #007bff;
+    color: #fff;
+    margin-left: auto;
+}
+
+.bot-message {
+    text-align: left;
+    background-color: #e9ecef;
+    color: #333;
+    margin-right: auto;
+}

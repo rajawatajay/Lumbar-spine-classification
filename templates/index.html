@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <title>SpineAI</title>
+    <style>
+        /* body {
+            background-image: url("{{url_for('static', filename='BC.png')}}");
+            background-size: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            color: white;
+            font-family: Arial, sans-serif;
+        } */
+        .row {
+            display: flex;
+            justify-content:left;
+            align-items: center;
+            padding-left: 48px;
+            height: 100vh;
+        }
+        .blog-section {
+            padding: 20px; /* Reduce padding */
+            margin: 20px 0; /* Reduce margin */
+            padding: 50px;
+            text-align: center;
+        }
+        .blog-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .blog-box {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .blog-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .blog-box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        }
+        .blog-box:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.9);
+        }
+        .category {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        .blog-box h3 {
+            margin: 10px;
+            font-size: 20px;
+        }
+        .blog-box p {
+            margin: 10px;
+            color: #555;
+        }
+        .blog-box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .author {
+            font-size: 14px;
+            color: gray;
+            margin: 10px;
+        }
+        .view-all {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .view-all:hover {
+            background: #0056b3;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hidden {
+            display: none;
+            opacity: 0;
+        }
+
+        .blog-box.animated {
+            animation: fadeInUp 0.6s ease-in-out;
+        }
+</style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <section>
+        <div class="home-content typewriter">
+            <h1>Welcome to Lumbar Spine Classification</h1>
+            <p>Using Deep Learning to provide accurate and efficient Spine diagnosis.</p>
+        </div>
+        {% if session.user %}
+        <div class="row" style="margin-bottom: -12pc;">
+            <div class="col-md-3" style="margin-bottom: 75px;">
+                <a class="btn btn-outline-dark" href="/predict" role="button" style="text-transform:none; margin-top: 0px;">
+                    Predict
+                </a>
+                <a class="btn btn-outline-dark" href="{{ url_for('chatbot')}}" role="button">
+                    ChatBot
+                </a>
+            </div>
+        {% else %}
+        <br><br>
+        <br><br>
+        <div class="row">
+            <div class="col-md-3" style="margin-bottom: 75px;">
+                <a class="btn btn-outline-dark" href="/login/google" role="button" style="text-transform:none; margin-top: 0px;">
+                    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+                    src="/static/google-logo.jpg" />
+                    Login with Google
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </section>
+    <div class="blog-section">
+        <h2>Spine Related Topics</h2>
+        <div class="blog-container">
+            <div class="blog-box">
+                <a href="https://www.spinesurgeon.in/how-can-spine-issues-cause-leg-pain-and-discomfort/" target="_blank">
+                <img src="/static/001.png" alt="Blog Image">
+                <span class="category">Research</span>
+                <h3>How Can Spine Issues Cause Leg Pain and Discomfort?</h3>
+                </a>
+                <p>A number of spinal conditions can result in leg pain.....</p>
+            </div>
+
+            <div class="blog-box">
+                <a href="https://www.spinesurgeon.in/can-spinal-problems-cause-tremors/" target="_blank">
+                <img src="/static/002.png" alt="Blog Image">
+                <span class="category">Myth</span>
+                <h3>Can spinal problems cause tremors?</h3>
+                </a>
+                <p>When we hear the word “tremors,” most of us think of Parkinson's disease.</p>
+            </div>
+
+            <div class="blog-box">
+                <a href=https://www.spinesurgeon.in/what-to-expect-from-endoscopic-spine-surgery/" target="_blank">
+                <img src="/static/003.png" alt="Blog Image">
+                <span class="category">Awareness</span>
+                <h3>What to Expect from Endoscopic Spine Surgery?</h3>
+                </a>
+                <p>If you have any spinal problems that cause pain, numbness, or other neurological problems that can't be treated with non-surgical treatment, </p>
+            </div>
+            <div class="blog-box">
+                <a href="https://www.spinesurgeon.in/facet-joint-disorder-treatment/" target="_blank">
+                <img src="/static/004.png" alt="Blog Image">
+                <span class="category">Hopes</span>
+                <h3>Facet Joint Disorder Treatment</h3>
+                </a>
+                <p>As with other joints in the body, the facet joints retain a layer of protective....</p>
+            </div>
+        </div>
+        <button class="view-all">View all Articles</button>
+
+    </div>
+    {% include 'footer.html' %}
+    <script>
+        document.querySelector(".view-all").addEventListener("click", function () {
+            const blogContainer = document.querySelector(".blog-container");
+    
+            // Check if blogs are already loaded
+            if (this.dataset.clicked === "true") {
+                window.location.href = "https://www.spinesurgeon.in/health-blog/";
+                return; // Stop further execution
+            }
+    
+            const newBlogs = [
+                {
+                    img: "/static/007.png",
+                    category: "Power",
+                    title: "Knowing the Different Types of Spinal Stenosis and overview of Lumbar stenosis",
+                    content: "Spinal stenosis is a condition that narrows the openings in the spine",
+                    link: "https://www.spinesurgeon.in/knowing-the-different-types-of-spinal-stenosis-and-overview-of-lumbar-stenosis/"
+                },
+                {
+                    img: "/static/005.png",
+                    category: "Self-Care",
+                    title: "Spinal Fractures: Types, Symptoms and Treatment`",
+                    content: "Spinal compression fractures (SCFs) are most commonly observed",
+                    link: "https://www.nationalbreastcancer.org/blog/7-steps-to-self-care/"
+                },
+                {
+                    img: "/static/006.png",
+                    category: "Myth or Reality",
+                    title: "Everything you need to know about Endoscopic Spine Surgery",
+                    content: "If you are diagnosed with any spinal condition leading to symptoms such as pain....",
+                    author: "By Annie Cavalier",
+                    link: "https://www.spinesurgeon.in/everything-you-need-to-know-about-endoscopic-spine-surgery/"
+                }
+            ];
+    
+            newBlogs.forEach((blog, index) => {
+                const blogBox = document.createElement("div");
+                blogBox.classList.add("blog-box", "hidden"); // Initially hidden for animation
+                blogBox.innerHTML = `
+                    <a href="${blog.link}" target="_blank">
+                        <img src="${blog.img}" alt="Blog Image">
+                    </a>
+                    <span class="category">${blog.category}</span>
+                    <a href="${blog.link}" target="_blank">
+                        <h3>${blog.title}</h3>
+                    </a>
+                    <p>${blog.content}</p>
+                    <p class="author">${blog.author || ""}</p>
+                `;
+                blogContainer.appendChild(blogBox);
+    
+                // Delay animation for each blog box
+                setTimeout(() => {
+                    blogBox.classList.remove("hidden");
+                    blogBox.classList.add("animated");
+                }, index * 200);
+            });
+    
+            // Mark blogs as loaded
+            this.dataset.clicked = "true";
+            // Redirect the button to a blogging site after all articles are loaded
+            this.innerText = "Visit Our Blog";
+            this.onclick = function () {
+                window.location.href = "https://www.spinesurgeon.in/health-blog/";
+            };
+        });
+    </script>  
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Classification</title>
+    
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <center>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    {% if prediction %}
+        <h1>Prediction: {{ prediction }}</h1>
+    {% endif %}
+    <h1>Upload an Image for Classification</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data"><br>
+        <input type="file" name="file" accept="image/*" required>
+        <br><br>
+        <br><br>
+        <button type="submit">Upload and Predict</button>
+    </form>
+</center>
+    {% include 'footer.html' %}
+</body>
+</html>

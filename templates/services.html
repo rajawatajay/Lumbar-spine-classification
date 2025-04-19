@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <section>
+        <div class="home-content">
+            <h1>Our Services</h1>
+            <p>Using Deep Learning to provide accurate and efficient Spine Desease Predcition of MRI images</p>
+            <hr style="width: 100%; margin-left: 0;  border-color: #333;;">
+            <p>Use Spine Predictor below and test you report...</p>
+            {% if session.user %}
+            <div class="row">
+                <div class="col-md-3" style="margin-bottom: 70px; margin-top: 10px;">
+                    <a class="btn btn-outline-dark" href="{{ url_for('predict')}}" role="button">
+                        Predict Cancer
+                    </a>
+                    <br><br>
+                    <a class="btn btn-outline-dark" href="{{ url_for('chatbot')}}" role="button">
+                        ChatBot
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <div class="row">
+                <div class="col-md-3" style="margin-bottom: 70px; margin-top: 10px;">
+                    <a class="btn btn-outline-dark" href="{{ url_for('login')}}" role="button">
+                        Predict Spine Desease
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+    </section>
+    {% include 'footer.html' %}
+</body>
+
+</html>
